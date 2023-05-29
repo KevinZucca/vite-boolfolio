@@ -30,10 +30,10 @@ export default{
     },
 
     coverImage() {
-        if(this.project.img){
-            return this.baseUrl + 'storage/' + this.project.img;
-        } else {
+        if(this.project.img == null){
             return 'https://th.bing.com/th/id/R.46731e9506c82fadd455c17d954be3d9?rik=2p2MV1JdWEywIQ&pid=ImgRaw&r=0';
+        } else {
+            return this.baseUrl + 'storage/' + this.project.img;
         }
     }
   }
@@ -50,7 +50,8 @@ export default{
             <div class="card-body">
                 <h5 class="card-title project-name">{{ project.name }}</h5>
                 <p class="card-text">{{ this.checkLength }}</p>
-            </div>
+                <small class="card-text">Tipologia: <strong>{{ project.type ? project.type.name : 'Nessuna Tipologia'}}</strong> </small>
+            </div> 
        
             <div class="card-body">
                 <button class="btn btn-primary">
@@ -67,7 +68,6 @@ export default{
 <style lang="scss" scoped>
     .card {
         padding: 10px;
-        height: 400px;
 
         text-align: center;
         transition: scale .2s ease-in;
@@ -91,8 +91,6 @@ export default{
             display: flex;
             flex-flow: column;
             align-items: center;
-
-            height: 20%;
       
             a {
                 font-size: .8em;
