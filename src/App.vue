@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import ProjectCard from './components/ProjectCard.vue';
+import AppHeader from './components/AppHeader.vue';
 
 export default{
   name: 'App',
@@ -16,6 +17,7 @@ export default{
 
   components: {
     ProjectCard,
+    AppHeader,
   },
   
   created() {
@@ -53,6 +55,8 @@ export default{
 </script>
 
 <template>
+
+  <AppHeader></AppHeader>
 
   <div class="container">
     <h1 id="projects-title">Tutti i progetti</h1>

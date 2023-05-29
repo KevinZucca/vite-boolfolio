@@ -51,14 +51,11 @@ export default{
                 <h5 class="card-title project-name">{{ project.name }}</h5>
                 <p class="card-text">{{ this.checkLength }}</p>
                 <small class="card-text">Tipologia: <strong>{{ project.type ? project.type.name : 'Nessuna Tipologia'}}</strong> </small>
-            </div> 
-       
-            <div class="card-body">
                 <button class="btn btn-primary">
                     Vai ai dettagli
                 </button>
                 <a href="#" class="card-link">{{ project.github_link }}</a>
-            </div>
+            </div> 
         </div>
 
     </div>
@@ -67,7 +64,10 @@ export default{
 
 <style lang="scss" scoped>
     .card {
-        padding: 10px;
+        display: flex;
+        flex-flow: column;
+
+        height: 400px;
 
         text-align: center;
         transition: scale .2s ease-in;
@@ -91,6 +91,7 @@ export default{
             display: flex;
             flex-flow: column;
             align-items: center;
+            justify-content: center;
       
             a {
                 font-size: .8em;
