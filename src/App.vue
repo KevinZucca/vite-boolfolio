@@ -1,6 +1,6 @@
 <script>
-import HelloWorld from './components/HelloWorld.vue';
 import axios from 'axios';
+import ProjectCard from './components/ProjectCard.vue';
 
 export default{
   name: 'App',
@@ -8,9 +8,14 @@ export default{
   data() {
     return {
       projects : [],
-    }
+    };
+
   },
 
+  components: {
+    ProjectCard,
+  },
+  
   created() {
     this.getProjects();
   },
@@ -30,15 +35,27 @@ export default{
 <template>
 
   <div class="container">
-    <h1>Tutti i progetti</h1>
+    <h1 id="projects-title">Tutti i progetti</h1>
 
-   
+    <div class="row">
+      <div class="col-3" v-for="project in projects">
+        <ProjectCard :project="project"></ProjectCard>
+      </div>
+    </div>
   </div>
-
 
 </template>
 
 <style lang="scss" scoped>
+
+  #projects-title {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .col-3 {
+    margin-bottom: 30px;
+  }
 
 
 </style>
