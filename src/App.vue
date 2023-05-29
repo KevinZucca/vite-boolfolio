@@ -8,6 +8,8 @@ export default{
   data() {
     return {
       projects : [],
+      currentPage : 1,
+      lastPage : '',
     };
 
   },
@@ -22,13 +24,32 @@ export default{
 
   methods: {
     getProjects(){
-      axios.get('http://127.0.0.1:8000/api/projects').then(response=>{
-        this.projects = response.data.results;
+      axios.get('http://127.0.0.1:8000/api/projects?page=' + this.currentPage).then(response=>{
+        this.projects = response.data.results.data;
+        this.lastPage = response.data.results.last_page;
       });
+    },
+
+    goNextPage() {
+      this.currentPage++;
+      this.getProjects();
+      if(this.currentPage == this.lastPage){
+        document.getElementById('next-page').classList.add('invisible');
+        document.getElementById('prev-page').classList.remove('invisible');
+      } 
+    },
+
+    goPrevPage() {
+      this.currentPage--;
+      document.getElementById('next-page').classList.remove('invisible');
+      this.getProjects();
+      if(this.currentPage == 1){
+        document.getElementById('prev-page').classList.add('invisible');
+      }
     }
   }
 
-}
+  }
 </script>
 
 <template>
@@ -41,20 +62,59 @@ export default{
         <ProjectCard :project="project"></ProjectCard>
       </div>
     </div>
+
+    <button id="prev-page" @click="goPrevPage()">
+      Pagina precedente
+    </button>
+
+    <button id="next-page" @click="goNextPage()">
+      Pagina successiva
+    </button>
+
   </div>
+
 
 </template>
 
 <style lang="scss" scoped>
 
+.container {
+  position: relative;
+
+
   #projects-title {
     text-align: center;
     padding: 20px;
   }
-
+  
   .col-3 {
     margin-bottom: 30px;
   }
+
+  #prev-page {
+    position: absolute;
+    left: -150px;
+    top: 50%;
+
+    padding: 10px;
+    border: none;
+  }
+  
+  #next-page {
+    position: absolute;
+    right: -150px;
+    top: 50%;
+
+    padding: 10px;
+    border: none;
+  }
+
+}
+
+
+.invisible {
+  display: none;
+}
 
 
 </style>
