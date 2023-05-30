@@ -3,3 +3,18 @@
 .full-container {
   width: 100%;
 }
+
+.my-button {
+  width: 150px;
+  height: 40px;
+
+  border: none;
+  border-radius: 10px;
+
+  transition: scale .1s ease-in;
+
+
+  &:hover {
+    scale: 1.1;
+  }
+}

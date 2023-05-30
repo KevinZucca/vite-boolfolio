@@ -26,18 +26,64 @@ export default{
 
 <template>
 
-  <div class="container">
-    <h1>Home Page</h1>
+  <div class="full-container">
+
+    <div id="home-container" class="container">
+      <div id="left-side" class="main-home-container container">
+        <h1>Name Surname</h1>
+        <p>Full Stack Developer</p>
+
+        <div id="buttons-container">
+          <button class="my-button">Who am I</button>
+          <button class="my-button">Skills</button>
+        </div>
+      </div>
+      <div id="right-side" class="main-home-container">rightside</div>
+    </div>
   </div>
 
 </template>
 
 <style lang="scss" scoped>
-.container {
+.full-container {
   padding: 20px;
-  
-  h1 {
-    text-align: center;
+  height: calc(100vh - 100px);
+
+  #home-container {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+
+    margin-top: 40px;
+
+    #left-side {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+
+      h1 {
+        font-size: 4em;
+      }
+
+      p {
+        font-size: 2em;
+      }
+
+      #buttons-container {
+        display: flex;
+        gap: 20px;
+      }
+    }
+
+    .main-home-container {      
+      width: 50%;
+      height: 500px;
+
+      margin: 30px;
+      padding: 20px;
+
+      background-color: rgb(122, 122, 207);
+    }
   }
 }
 

@@ -35,6 +35,6 @@ export default{
 <style lang="scss" scoped>
     .full-container {
         height: 100px;
-        background-color: rgba(114, 114, 197, 0.447);
+        background-color: rgba(34, 98, 202, 0.447);
     }
 </style>
