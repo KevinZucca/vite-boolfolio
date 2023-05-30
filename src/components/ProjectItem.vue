@@ -26,6 +26,18 @@ export default {
       } else {
         return 'https://www.schiffner.com/wp-content/themes/schiff-responsive/images/noimage.jpg';
       }
+    },
+
+    setProjectDate() {
+      return this.project.created_at.substring(0, 10);
+    },
+
+    checkUrlLength() {
+      if(this.project.github_link.length > 30) {
+        return this.project.github_link.substring(0, 30) + '...';
+      } else {
+        return this.project.github_link;
+      }
     }
 
   }
@@ -36,6 +48,7 @@ export default {
      <div class="card" style="width: 18rem;">
           <img :src="setUrl" class="card-img-top" alt="cover-img">
           <div class="card-body">
+              <small class="creation-date">Data creazione: <strong>{{ this.setProjectDate }} </strong> </small>
               <h5 class="card-title project-name">{{ project.name }}</h5>
               <p class="card-text">{{ this.checkLength }}</p>
               <small class="card-text">Tipologia: <strong>{{ project.type ? project.type.name : 'Nessuna Tipologia'}}</strong> </small>
@@ -43,7 +56,7 @@ export default {
               <button class="btn btn-primary">
                   Vai ai dettagli
               </button>
-              <a href="#" class="card-link">{{ project.github_link }}</a>
+              <a href="#" class="card-link">{{ this.checkUrlLength }}</a>
           </div> 
       </div>
 </template>
@@ -53,11 +66,9 @@ export default {
         display: flex;
         flex-flow: column;
 
-        height: 400px;
-
         text-align: center;
         transition: scale .2s ease-in;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
 
         &:hover {
             scale: 1.1;
@@ -70,7 +81,7 @@ export default {
 
         img {
             width: 100%;
-            height: 40%;
+            height: 200px;
             object-fit: cover;
         };
 
@@ -79,6 +90,8 @@ export default {
             flex-flow: column;
             align-items: center;
             justify-content: center;
+
+            height: 270px;
       
             a {
                 font-size: .8em;
@@ -91,6 +104,10 @@ export default {
                 &:hover {
                     scale: 1.1;
                 }
+            }
+
+            .creation-date {
+              margin-bottom: 1em;
             }
 
             .technologies {

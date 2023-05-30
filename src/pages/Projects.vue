@@ -8,6 +8,9 @@ export default{
   data() {
     return {
       projects : [],
+      pagination: {}, 
+
+      apiURL: 'http://127.0.0.1:8000/api/projects',
     };
   },
 
@@ -16,7 +19,7 @@ export default{
   },
   
   created() {
-    this.getProjects();
+    this.getProjects(this.apiURL);
   },
 
   computed: {
@@ -24,10 +27,10 @@ export default{
   
 
   methods: {
-    getProjects(){
-      axios.get('http://127.0.0.1:8000/api/projects').then(response=>{
+    getProjects(apiURL){
+      axios.get(apiURL).then(response=>{
         this.projects = response.data.results.data;
-        console.log(this.projects)
+        this.pagination = response.data.results;
       });
     },
 
@@ -37,15 +40,26 @@ export default{
 </script>
 
 <template>
-
-<div class="container">
-  <h1>Lista progetti</h1>
+<div class="full-container">
   
-  <div class="row">
-    <div class="col-md-6 col-lg-4 col-xl-3" v-for="project in projects">
-      <ProjectItem :project="project"></ProjectItem>
-    </div>
+  <div class="container">
+    <h1>Lista progetti</h1>
+    
+    <div class="row">
+      <div class="col-md-6 col-lg-4 col-xl-3" v-for="project in projects">
+        <ProjectItem :project="project"></ProjectItem>
+      </div>
 
+      <div id="pagination-container">
+        <button v-for="paginate in this.pagination.links " 
+          class="btn paginate-button" 
+          v-html="paginate.label"
+          @click="getProjects(paginate.url)">
+        </button>
+      </div>
+  
+    </div>
+  
   </div>
 
 </div>
@@ -55,12 +69,31 @@ export default{
 
 <style lang="scss" scoped>
 
-.container {
-  padding: 20px;
+.full-container {
+  background-color: rgba(0, 0, 0, 0.945);
+  .container {
+    padding: 20px;
+    min-height: 950px;
 
-  .row {
-    display: flex;
-    flex-flow: row wrap;
+    h1 {
+      color: rgba(255, 255, 255, 0.856);
+    }
+  
+  
+    .row {
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    #pagination-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+
+      button {
+        background-color: #fff;
+      }
+    }
   }
 }
 

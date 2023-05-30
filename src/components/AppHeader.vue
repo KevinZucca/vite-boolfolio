@@ -46,7 +46,7 @@ export default{
     nav {
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        gap: 40px;
 
         padding: 10px;
         height: 70px;
