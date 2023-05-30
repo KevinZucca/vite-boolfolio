@@ -42,7 +42,7 @@ export default{
   <h1>Lista progetti</h1>
   
   <div class="row">
-    <div class="col-3" v-for="project in projects">
+    <div class="col-md-6 col-lg-4 col-xl-3" v-for="project in projects">
       <ProjectItem :project="project"></ProjectItem>
     </div>
 
@@ -57,6 +57,11 @@ export default{
 
 .container {
   padding: 20px;
+
+  .row {
+    display: flex;
+    flex-flow: row wrap;
+  }
 }
 
 
