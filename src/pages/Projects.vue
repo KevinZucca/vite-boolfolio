@@ -8,7 +8,6 @@ export default{
   data() {
     return {
       projects : [],
-      baseUrl : 'http://127.0.0.1:8000/',
     };
   },
 
@@ -28,17 +27,9 @@ export default{
     getProjects(){
       axios.get('http://127.0.0.1:8000/api/projects').then(response=>{
         this.projects = response.data.results.data;
-
+        console.log(this.projects)
       });
     },
-
-    setUrl() {
-      if(this.project.img) {
-        return this.baseUrl + '/storage' + this.project.img;
-      }
-      console.log(this.project)
-    }
-
 
   }
 
@@ -64,6 +55,9 @@ export default{
 
 <style lang="scss" scoped>
 
+.container {
+  padding: 20px;
+}
 
 
 </style>

@@ -33,6 +33,12 @@ export default{
 </template>
 
 <style lang="scss" scoped>
-
+.container {
+  padding: 20px;
+  
+  h1 {
+    text-align: center;
+  }
+}
 
 </style>

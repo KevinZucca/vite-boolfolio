@@ -30,7 +30,7 @@ export default{
   <AppHeader></AppHeader>
 
   <div class="container">
-    benvenuto nella home
+    Pagina about
   </div>
 
 

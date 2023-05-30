@@ -12,17 +12,17 @@ export default {
   },
 
   computed: {
-    description() {
-      if(this.project.description.length > 30) {
-        return this.project.description.substring(0, 30) + '...';
+    checkLength() {
+      if(this.project.description.length > 50) {
+        return this.project.description.substring(0, 50) + '...';
       } else {
         return this.project.description;
       }
     },
 
-    coverImage() {
-      if(this.project.cover_image) {
-        return 'http://127.0.0.1:8000/storage/' + this.project.cover_image;
+    setUrl() {
+      if(this.project.img) {
+        return 'http://127.0.0.1:8000/storage/' + this.project.img;
       } else {
         return 'https://www.schiffner.com/wp-content/themes/schiff-responsive/images/noimage.jpg';
       }
@@ -37,8 +37,9 @@ export default {
           <img :src="setUrl" class="card-img-top" alt="cover-img">
           <div class="card-body">
               <h5 class="card-title project-name">{{ project.name }}</h5>
-              <p class="card-text">{{ project.description }}</p>
+              <p class="card-text">{{ this.checkLength }}</p>
               <small class="card-text">Tipologia: <strong>{{ project.type ? project.type.name : 'Nessuna Tipologia'}}</strong> </small>
+              <small class="card-text">Tecnologie: <strong class="technologies" v-for="technology in project.technologies">{{ project.technologies ? technology.name : 'Nessuna Tecnologia'}}</strong> </small>
               <button class="btn btn-primary">
                   Vai ai dettagli
               </button>
@@ -90,6 +91,10 @@ export default {
                 &:hover {
                     scale: 1.1;
                 }
+            }
+
+            .technologies {
+              margin-right: .5em;
             }
         }
     }
