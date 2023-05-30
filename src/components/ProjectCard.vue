@@ -44,6 +44,7 @@ export default{
 <template>
 
     <div class="container">
+
     
         <div class="card" style="width: 18rem;">
             <img :src="coverImage" class="card-img-top" alt="cover-img">

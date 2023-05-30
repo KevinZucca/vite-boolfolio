@@ -61,6 +61,7 @@ export default{
   <div class="container">
     <h1 id="projects-title">Tutti i progetti</h1>
 
+    <router-view></router-view>
     <div class="row">
       <div class="col-3" v-for="project in projects">
         <ProjectCard :project="project"></ProjectCard>
