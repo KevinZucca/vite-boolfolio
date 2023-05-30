@@ -17,9 +17,6 @@ export default{
   },
 
   methods: {
-    refreshPage() {
-        window.location.reload()
-    }
   }
 
   }
@@ -28,23 +25,31 @@ export default{
 <template>
 
   <div class="full-container">
-    <nav>
-        <a @click="refreshPage()" href="#">Tutti i Progetti</a>
-    </nav>
-  </div>
+    <div class="container">
+      <nav>
+          <router-link :to="{ name: 'home'}">Home Page</router-link>
+          <router-link :to="{ name: 'projects'}">Tutti i progetti</router-link>
+          <router-link :to="{ name: 'about'}">About</router-link>
+      </nav>
+    </div>
 
+  </div>
 
 </template>
 
 <style lang="scss" scoped>
 
+    .full-container{
+      border-bottom: 1px solid rgba(0, 0, 0, 0.235);
+    }
+
     nav {
         display: flex;
         align-items: center;
+        justify-content: space-around;
 
         padding: 10px;
         height: 70px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.235);
     }
 
 </style>

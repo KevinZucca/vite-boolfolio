@@ -1,28 +1,25 @@
 <script>
-import AppHeader from './components/AppHeader.vue';
-import AppFooter from './components/AppFooter.vue';
-
+import AppHeader from '../components/AppHeader.vue';
 
 export default{
   name: 'App',
 
   data() {
     return {
-     
+
     };
 
   },
 
   components: {
-    AppHeader,
-    AppFooter,
+ 
   },
   
   created() {
   },
 
   methods: {
-   
+
   }
 
   }
@@ -31,13 +28,15 @@ export default{
 <template>
 
   <AppHeader></AppHeader>
-  <router-view></router-view>
-  <AppFooter></AppFooter>
+
+  <div class="container">
+    benvenuto nella home
+  </div>
+
 
 </template>
 
 <style lang="scss" scoped>
-
 
 
 </style>
