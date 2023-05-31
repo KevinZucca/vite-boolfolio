@@ -7,13 +7,22 @@ export default {
       projectSlug : '',
       project : {},
       apiURL: 'http://127.0.0.1:8000/api/projects/',
+      projectFound: false,
+      isLoading: true,
     }
   },
 
   methods: {
     getProjects() {
         axios.get(this.apiURL + this.projectSlug).then(response=>{
-          this.project = response.data.project;
+          if(response.data.success){
+            this.project = response.data.project;
+            this.projectFound = true;
+            this.isLoading = false;
+          } else {
+            this.projectFound = false;
+            this.isLoading = false;
+          }
         });
     },
 
@@ -37,21 +46,40 @@ export default {
 </script>
 
 <template>
-     <div class="container text-center my-5">
+      <!-- loading spinner -->
+      <div id="spinner" class="d-flex justify-content-center" v-if="isLoading">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <!-- // -->
+
+     <div class="container text-center my-5" v-if="this.projectFound == true">
         <h1>{{ project.name }}</h1>
         <img :src="getImage()">
         <p id="project-description">{{ project.description }}</p>
         <p>Tipologia: {{ project.type ? project.type.name : 'Nessuna tipologia' }}</p>
         <p>Tecnologie: <strong v-for="technology in project.technologies">{{ technology.name }}</strong></p>
+     </div>
 
+     <div id="error-advise" v-else>
+      <h4 class="text-center text-danger">Nessun progetto trovato</h4>
      </div>
 </template>
 
 <style lang="scss" scoped>
 
-.container {
-  #project-description {
-    font-size: 1.5em;
+  .container {
+    #project-description {
+      font-size: 1.5em;
+    }
   }
-}
+
+  #spinner {
+    position: fixed;
+    top: 50%;
+
+    width: 100%;
+    height: 100%;
+  }
 </style>

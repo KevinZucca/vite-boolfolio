@@ -39,10 +39,6 @@ export default{
 
 <style lang="scss" scoped>
 
-    .full-container{
-      background-color: #9cb9e7;
-    }
-
     nav {
         display: flex;
         align-items: center;

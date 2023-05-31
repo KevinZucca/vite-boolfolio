@@ -1,5 +1,4 @@
 <script>
-import AppHeader from '../components/AppHeader.vue';
 
 export default{
   name: 'App',
@@ -12,7 +11,6 @@ export default{
   },
 
   components: {
- 
   },
   
   created() {
@@ -27,7 +25,6 @@ export default{
 
 <template>
 
-  <AppHeader></AppHeader>
 
   <div class="container">
     Pagina about

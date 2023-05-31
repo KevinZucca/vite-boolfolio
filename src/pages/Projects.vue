@@ -9,7 +9,7 @@ export default{
     return {
       projects : [],
       pagination: {}, 
-
+      isLoading: true,
       apiURL: 'http://127.0.0.1:8000/api/projects',
     };
   },
@@ -31,6 +31,12 @@ export default{
       axios.get(apiURL).then(response=>{
         this.projects = response.data.results.data;
         this.pagination = response.data.results;
+        if(response.data.success){
+            this.projects = response.data.results.data;
+            this.isLoading = false;
+          } else {
+            this.isLoading = false;
+          }
       });
     },
 
@@ -41,6 +47,14 @@ export default{
 
 <template>
 <div class="full-container">
+
+    <!-- loading spinner -->
+  <div id="spinner" class="d-flex justify-content-center" v-if="isLoading">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <!-- // -->
   
   <div class="container">
     <h1>Lista progetti</h1>
@@ -71,6 +85,15 @@ export default{
 
 .full-container {
   background-color: rgba(0, 0, 0, 0.945);
+
+  #spinner {
+    position: fixed;
+    top: 50%;
+
+    width: 100%;
+    height: 100%;
+    color: white;
+  }
   .container {
     padding: 20px;
     min-height: 950px;
