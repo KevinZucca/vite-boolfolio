@@ -54,6 +54,7 @@ export default{
     justify-content: center;
     gap: 2em;
 
+    height: 100%;
     margin-top: 40px;
 
     #left-side {
@@ -77,12 +78,12 @@ export default{
 
     .main-home-container {      
       width: 50%;
-      height: 500px;
+      height: 60%;
 
       margin: 30px;
       padding: 20px;
 
-      background-color: rgb(122, 122, 207);
+      background-color: #7cb6b0;
     }
   }
 }

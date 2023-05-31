@@ -11,6 +11,9 @@ export default {
     project: Object,
   },
 
+  methods: {
+  },
+
   computed: {
     checkLength() {
       if(this.project.description.length > 50) {
@@ -32,14 +35,6 @@ export default {
       return this.project.created_at.substring(0, 10);
     },
 
-    checkUrlLength() {
-      if(this.project.github_link.length > 30) {
-        return this.project.github_link.substring(0, 30) + '...';
-      } else {
-        return this.project.github_link;
-      }
-    }
-
   }
 }
 </script>
@@ -53,10 +48,7 @@ export default {
               <p class="card-text">{{ this.checkLength }}</p>
               <small class="card-text">Tipologia: <strong>{{ project.type ? project.type.name : 'Nessuna Tipologia'}}</strong> </small>
               <small class="card-text">Tecnologie: <strong class="technologies" v-for="technology in project.technologies">{{ project.technologies ? technology.name : 'Nessuna Tecnologia'}}</strong> </small>
-              <button class="btn btn-primary">
-                  Vai ai dettagli
-              </button>
-              <a href="#" class="card-link">{{ this.checkUrlLength }}</a>
+              <router-link :to="{name: 'singleProject', params:{ slug: project.slug }}">Vai ai dettagli</router-link>
           </div> 
       </div>
 </template>
@@ -93,9 +85,6 @@ export default {
 
             height: 250px;
       
-            a {
-                font-size: .8em;
-            }
 
             button {
                 width: 80%;
