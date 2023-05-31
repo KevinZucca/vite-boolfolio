@@ -17,6 +17,7 @@ export default{
   },
 
   methods: {
+
   }
 
   }
@@ -27,9 +28,9 @@ export default{
   <div class="full-container">
     <div class="container">
       <nav>
-          <router-link class="nav-link" :to="{ name: 'home'}">Home Page</router-link>
-          <router-link class="nav-link" :to="{ name: 'projects'}">Tutti i progetti</router-link>
-          <router-link class="nav-link" :to="{ name: 'about'}">About</router-link>
+          <router-link class="nav-link" exact-active-class="active" :to="{ name: 'home'}">Home Page</router-link>
+          <router-link class="nav-link" exact-active-class="active" :to="{ name: 'projects'}">All Projects</router-link>
+          <router-link class="nav-link" exact-active-class="active" :to="{ name: 'about'}">About</router-link>
       </nav>
     </div>
 
@@ -53,7 +54,13 @@ export default{
           font-weight: bold;
 
           color: rgba(0, 0, 0, 0.708);
+
+          &.active {
+            color: #82b1ac;
+          }
         }
     }
 
+
+    
 </style>
