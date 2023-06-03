@@ -26,7 +26,7 @@ export default{
 <template>
 
 
-  <div class="container">
+  <div class="full-container">
     Pagina about
   </div>
 
@@ -34,6 +34,12 @@ export default{
 </template>
 
 <style lang="scss" scoped>
+  .full-container {
+    margin: 100px auto;
+    width: 800px;
+    height: 500px;
 
+    border: 1px solid rgba(0, 0, 0, 0.427);
+  }
 
 </style>

@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from './pages/Home.vue';
 import About from './pages/About.vue';
 import Projects from './pages/Projects.vue';
-import SingleProject from './components/SingleProject.vue';
+import SingleProject from './pages/SingleProject.vue';
 
 
 const router = createRouter({

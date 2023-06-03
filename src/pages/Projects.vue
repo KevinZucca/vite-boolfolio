@@ -46,7 +46,7 @@ export default{
 </script>
 
 <template>
-<div class="full-container">
+<div class="full-container animate__animated animate__fadeIn">
 
     <!-- loading spinner -->
   <div id="spinner" class="d-flex justify-content-center" v-if="isLoading">

@@ -46,25 +46,26 @@ export default {
 </script>
 
 <template>
-      <!-- loading spinner -->
-      <div id="spinner" class="d-flex justify-content-center" v-if="isLoading">
-        <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      </div>
-      <!-- // -->
-
-     <div class="container text-center my-5" v-if="this.projectFound == true">
-        <h1>{{ project.name }}</h1>
+  <!-- loading spinner -->
+  <div id="spinner" class="d-flex justify-content-center" v-if="isLoading">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <!-- // -->
+  
+  <div class="container text-center my-5" v-if="this.projectFound">
+    <h1>{{ project.name }}</h1>
         <img :src="getImage()">
         <p id="project-description">{{ project.description }}</p>
         <p>Tipologia: {{ project.type ? project.type.name : 'Nessuna tipologia' }}</p>
         <p>Tecnologie: <strong v-for="technology in project.technologies">{{ technology.name }}</strong></p>
-     </div>
-
-     <div id="error-advise" v-else>
-      <h4 class="text-center text-danger">Nessun progetto trovato</h4>
-     </div>
+      </div>
+      
+      <div id="error-advise" v-else>
+        <h4 class="text-center alert alert-danger">Nessun progetto trovato</h4>
+      </div>
+      
 </template>
 
 <style lang="scss" scoped>
